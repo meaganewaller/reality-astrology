@@ -1,0 +1,19 @@
+.page-header
+  h1= @television_show.name
+
+h2 Seasons
+- @television_show.seasons.each do |season|
+  dl
+    dt= season.name
+    dd= "Aired: #{season.start_date.to_formatted_s(:long)} - #{season.end_date&.to_formatted_s(:long)}"
+    dd= "Contestants: #{season.contestants.count}"
+
+
+/- if policy(television_show).edit?
+=> link_to "Edit", edit_television_show_path(@television_show), class: "btn btn-primary"
+
+= link_to "Back", television_shows_path, class: "btn btn-secondary"
+
+/- if policy(television_show).destroy?
+=< link_to "Destroy", television_show_path(@television_show),
+          method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"

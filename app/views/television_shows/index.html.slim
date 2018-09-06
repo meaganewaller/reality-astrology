@@ -1,0 +1,26 @@
+div.page-header
+  h1 Television_shows
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th ID
+      th Name
+      th Actions
+
+  tbody
+    - @television_shows.each do |television_show|
+      tr
+        /td= link_to_if policy(television_show).show?, television_show.id, television_show_path(television_show)
+        td= link_to television_show.id, television_show_path(television_show)
+        td= television_show.name
+        td
+          /- if policy(television_show).edit?
+          = link_to "Edit", edit_television_show_path(television_show), class: "btn btn-primary btn-xs"
+          '
+          /- if policy(television_show).destroy?
+          = link_to "Destroy", television_show_path(television_show),
+                  method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-xs"
+
+/- if policy(TelevisionShow).create?
+= link_to "New Television show", new_television_show_path, class: "btn btn-primary"

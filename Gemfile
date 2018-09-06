@@ -10,6 +10,7 @@ gem "pg"
 gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 5.2.0"
+gem 'pry'
 
 # Front-endy
 gem "autoprefixer-rails"

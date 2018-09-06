@@ -1,0 +1,10 @@
+= simple_form_for(television_show) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, autofocus: true
+
+  => button_tag type: "submit", class: "btn btn-primary" do
+    = "#{btn_action_prefix} Television show"
+
+  = link_to "Back", :back, class: "btn btn-secondary"
